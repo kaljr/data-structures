@@ -1,0 +1,202 @@
+<html>
+  <head>
+  <!-- <script src="script.js"></script> -->
+  </head>
+
+  <body>
+
+  <script>
+
+// var Stack = function() {
+
+//   this.storage = {};
+//   this.length = 0;
+
+// };
+
+// Stack.prototype.size = function() {
+//     if (this.length <= 0) {
+//       this.length = 0;
+//       return this.length;
+//     }
+//     return this.length;
+// };
+
+// Stack.prototype.push = function(val) {
+//     this.storage[this.length] = val;
+//     this.length ++;
+// };
+
+// Stack.prototype.pop = function() {
+//     var result = this.storage[this.length-1];
+//     delete this.storage[this.length-1];
+//     this.length --;
+//     return result;
+// };
+//
+//
+
+
+// var Stack = function(){
+//   var someInstance = {};
+
+//   // Use an object with numeric keys to store values
+//   var storage = {};
+//   var length = 0;
+
+//   // Implement the methods below
+//   someInstance.push = function(value){
+//     storage[length] = value;
+//     length ++;
+//   };
+
+//   someInstance.pop = function(){
+//     var result = null;
+//     if (length > 0 ) {
+//       result = storage[length-1];
+//       delete storage[length-1];
+//       length --;
+//     }
+//     return result;
+//   };
+
+//   someInstance.size = function(){
+//     return length;
+//   };
+
+//   return someInstance;
+// };
+
+
+
+// var Queue = function(){
+//   var someInstance = {};
+
+//   // Use an object with numeric keys to store values
+//   var storage = {};
+//   var length = 0;
+
+//   // Implement the methods below
+
+//   someInstance.enqueue = function(value){
+//     storage[length] = value;
+//     length++;
+//   };
+
+//   someInstance.dequeue = function(){
+//     var result = null;
+//     result = storage[0];
+//     delete storage[0];
+//       for(var i=0; i<length-1; i++) {
+//         storage[i] = storage[i+1];
+//       }
+//     delete storage[length-1];
+//     length--;
+//     return result;
+//   };
+
+//   someInstance.size = function(){
+//     if(length <= 0) {
+//       return 0;
+//     }
+//     return length;
+//   };
+
+//   return someInstance;
+// };
+
+
+var Queue = function() {
+  this.storage = {};
+  this.length = 0;
+
+};
+
+
+Queue.prototype.size = function() {
+  return this.length;
+};
+
+Queue.prototype.enqueue = function(val) {
+  this.storage[this.length] = val;
+  this.length ++;
+};
+
+Queue.prototype.dequeue = function(val) {
+  var result = null;
+
+  if(this.length > 0) {
+    result = this.storage[0];
+    for (var i = 0; i<this.length-1; i++) {
+      this.storage[i] = this.storage[i+1];
+    }
+    delete this.storage[this.length-1];
+    this.length --;
+    return result;
+  }
+  if (result === null) {
+    return {};
+  }
+};
+
+// var Queue = function() {
+//   this.storage = {};
+//   this.head = 0;
+//   this.tail = 0;
+// }
+
+// Queue.prototype.size = function() {
+//   return this.head - this.tail;
+// };
+
+// Queue.prototype.enqueue = function(val) {
+//   this.storage[this.head] = val;
+//   this.head++;
+// };
+
+// Queue.prototype.dequeue = function() {
+//   if (this.head - this.tail > 0) {
+//     var result = this.storage[this.tail];
+//     delete this.storage[this.tail];
+//     this.tail++;
+//     return result;
+//   }
+// };
+
+
+
+
+
+
+var queued = [];
+
+for(var i=0;i<2000;i++) {
+  queued[i] = new Queue();
+
+  for(var j=0;j<2000;j++) {
+    queued[i].enqueue({a:1});
+  }
+  for(var j=0;j<2000;j++) {
+    queued[i].dequeue();
+  }
+}
+
+
+// var stacks = [];
+
+// for(var i=0;i<2000;i++) {
+//   stacks[i] = Stack();
+
+//   for(var j=0;j<20000;j++) {
+//     stacks[i].push({a:1});
+//   }
+//   for(var j=0;j<20000;j++) {
+//     stacks[i].pop();
+//   }
+// }
+
+  </script>
+
+  </body>
+
+</html>
