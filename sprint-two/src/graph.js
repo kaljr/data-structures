@@ -1,5 +1,4 @@
 
-
 var Graph = function(){
   this.nodeName = arguments[0];
   this.edges = {};
@@ -7,7 +6,7 @@ var Graph = function(){
 
 Graph.prototype.addNode = function(node){
   // new Graph(node);
-  this.edges[node] = new Graph(node);
+  this.edges[node] = [];
 };
 
 Graph.prototype.contains = function(node){
@@ -18,22 +17,26 @@ Graph.prototype.contains = function(node){
   }
 };
 
-
-
 Graph.prototype.removeNode = function(node){
   delete this.edges[node];
 };
 
 Graph.prototype.hasEdge = function(fromNode, toNode){
+  return _.contains(this.edges[fromNode], toNode);
 };
 
 Graph.prototype.addEdge = function(fromNode, toNode){
+  this.edges[fromNode].push(toNode);
+  this.edges[toNode].push(fromNode);
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.forEachNode = function(cb){
+  for (var key in this.edges) {
+    cb(key);
+  }
 };
 
 /*
